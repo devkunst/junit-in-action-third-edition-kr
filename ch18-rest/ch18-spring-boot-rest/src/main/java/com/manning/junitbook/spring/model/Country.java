@@ -31,7 +31,7 @@ public class Country {
     private String codeName;
     private String name;
 
-    // avoid "No default constructor for entity"
+    // JPA 엔티티는 기본 생성자가 필요하다
     public Country() {
 
     }

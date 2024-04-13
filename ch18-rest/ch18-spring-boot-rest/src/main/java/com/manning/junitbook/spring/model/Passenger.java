@@ -34,7 +34,7 @@ public class Passenger {
     private Country country;
     private boolean isRegistered;
 
-    // avoid "No default constructor for entity"
+    // JPA 엔티티는 기본 생성자가 필요하다
     public Passenger() {
 
     }
