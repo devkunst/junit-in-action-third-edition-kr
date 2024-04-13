@@ -52,7 +52,7 @@ public class FlightTest {
             registrationManager.getApplicationContext().publishEvent(new PassengerRegistrationEvent(passenger));
         }
 
-        System.out.println("All passengers from the flight are now confirmed as registered");
+        System.out.println("모든 승객이 등록되었는지 확인");
 
         for (Passenger passenger : flight.getPassengers()) {
             assertTrue(passenger.isRegistered());
