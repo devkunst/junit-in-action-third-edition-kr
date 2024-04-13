@@ -54,6 +54,6 @@ public class MockAccountManager implements AccountManager {
      * blank implementation.
      */
     public void updateAccount(Account account) {
-        // do nothing
+        // 아무 것도 하지 않는다
     }
 }

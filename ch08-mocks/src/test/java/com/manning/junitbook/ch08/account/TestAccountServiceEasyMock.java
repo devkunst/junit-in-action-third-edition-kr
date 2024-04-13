@@ -47,11 +47,14 @@ public class TestAccountServiceEasyMock {
         Account senderAccount = new Account("1", 200);
         Account beneficiaryAccount = new Account("2", 100);
 
+        // 기대를 정의한다
         mockAccountManager.updateAccount(senderAccount);
         mockAccountManager.updateAccount(beneficiaryAccount);
 
         expect(mockAccountManager.findAccountForUser("1")).andReturn(senderAccount);
         expect(mockAccountManager.findAccountForUser("2")).andReturn(beneficiaryAccount);
+
+        // 기대 정의가 끝나면 replay를 호출한다
         replay(mockAccountManager);
 
         AccountService accountService = new AccountService();

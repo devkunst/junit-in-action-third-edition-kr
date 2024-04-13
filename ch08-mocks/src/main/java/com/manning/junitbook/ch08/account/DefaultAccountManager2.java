@@ -72,7 +72,7 @@ public class DefaultAccountManager2
                 + userId + "]");
         this.configuration.getSQL("FIND_ACCOUNT_FOR_USER");
 
-        // Some code logic to load a user account using JDBC
+        // JDBC를 사용하여 유저의 계좌 정보를 가져오는 비즈니스 로직
         return null;
     }
 
