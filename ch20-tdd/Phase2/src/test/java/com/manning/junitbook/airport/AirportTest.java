@@ -29,7 +29,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AirportTest {
 
-    @DisplayName("Given there is an economy flight")
+    @DisplayName("Given 이코노미 항공편에서")
     @Nested
     class EconomyFlightTest {
 
@@ -41,6 +41,7 @@ public class AirportTest {
         }
 
         @Test
+        @DisplayName("이코노미 항공편과 일반 승객에 관한 테스트")
         public void testEconomyFlightRegularPassenger() {
             Passenger mike = new Passenger("Mike", false);
 
@@ -54,6 +55,7 @@ public class AirportTest {
         }
 
         @Test
+        @DisplayName("이코노미 항공편과 VIP 승객에 관한 테스트")
         public void testEconomyFlightVipPassenger() {
             Passenger james = new Passenger("James", true);
 
@@ -68,7 +70,7 @@ public class AirportTest {
 
     }
 
-    @DisplayName("Given there is a business flight")
+    @DisplayName("Given 비즈니스 항공편에서")
     @Nested
     class BusinessFlightTest {
         private Flight businessFlight;
@@ -79,6 +81,7 @@ public class AirportTest {
         }
 
         @Test
+        @DisplayName("비즈니스 항공편과 일반 승객에 관한 테스트")
         public void testBusinessFlightRegularPassenger() {
             Passenger mike = new Passenger("Mike", false);
 
@@ -90,6 +93,7 @@ public class AirportTest {
         }
 
         @Test
+        @DisplayName("비즈니스 항공편과 VIP 승객에 관한 테스트")
         public void testBusinessFlightVipPassenger() {
             Passenger james = new Passenger("James", true);
 
