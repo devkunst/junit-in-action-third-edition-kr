@@ -36,7 +36,7 @@ public class Passenger {
 
     public Passenger(String identifier, String name, String countryCode) {
         if (!Arrays.asList(Locale.getISOCountries()).contains(countryCode)) {
-            throw new RuntimeException("Invalid country code");
+            throw new RuntimeException("국가 코드가 적절하지 않습니다");
         }
 
         this.identifier = identifier;
@@ -64,13 +64,13 @@ public class Passenger {
         Flight previousFlight = this.flight;
         if (null != previousFlight) {
             if (!previousFlight.removePassenger(this)) {
-                throw new RuntimeException("Cannot remove passenger");
+                throw new RuntimeException("승객을 삭제할 수 없습니다");
             }
         }
         setFlight(flight);
         if (null != flight) {
             if (!flight.addPassenger(this)) {
-                throw new RuntimeException("Cannot add passenger");
+                throw new RuntimeException("승객을 추가할 수 없습니다");
             }
         }
     }
