@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AirportTest {
 
-    @DisplayName("Given there is an economy flight")
+    @DisplayName("Given 이코노미 항공편에서")
     @Nested
     class EconomyFlightTest {
 
@@ -46,13 +46,13 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a regular passenger")
+        @DisplayName("When 일반 승객은")
         class RegularPassenger {
 
             @Test
-            @DisplayName("Then you can add and remove him from an economy flight")
+            @DisplayName("Then 이코노미 항공편에서 추가가 가능하고 삭제도 가능하다")
             public void testEconomyFlightRegularPassenger() {
-                assertAll("Verify all conditions for a regular passenger and an economy flight",
+                assertAll("일반 승객은 이코노미 항공편에서 추가가 가능하고 삭제도 가능한지 검증",
                         () -> assertEquals("1", economyFlight.getId()),
                         () -> assertEquals(true, economyFlight.addPassenger(mike)),
                         () -> assertEquals(1, economyFlight.getPassengersList().size()),
@@ -64,12 +64,12 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a VIP passenger")
+        @DisplayName("When VIP 승객은")
         class VipPassenger {
             @Test
-            @DisplayName("Then you can add him but cannot remove him from an economy flight")
+            @DisplayName("Then 이코노미 항공편에서 추가가 가능하지만 삭제는 불가능하다")
             public void testEconomyFlightVipPassenger() {
-                assertAll("Verify all conditions for a VIP passenger and an economy flight",
+                assertAll("VIP 승객은 이코노미 항공편에서 추가가 가능하지만 삭제는 불가능한지 검증",
                         () -> assertEquals("1", economyFlight.getId()),
                         () -> assertEquals(true, economyFlight.addPassenger(james)),
                         () -> assertEquals(1, economyFlight.getPassengersList().size()),
@@ -82,7 +82,7 @@ public class AirportTest {
         }
     }
 
-    @DisplayName("Given there is a business flight")
+    @DisplayName("Given 비즈니스 항공편에서")
     @Nested
     class BusinessFlightTest {
         private Flight businessFlight;
@@ -97,13 +97,13 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a regular passenger")
+        @DisplayName("When 일반 승객은")
         class RegularPassenger {
 
             @Test
-            @DisplayName("Then you cannot add or remove him from a business flight")
+            @DisplayName("Then 비즈니스 항공편에서 추가가 불가능하고 삭제도 불가능하다")
             public void testBusinessFlightRegularPassenger() {
-                assertAll("Verify all conditions for a regular passenger and a business flight",
+                assertAll("일반 승객은 비즈니스 항공편에서 추가가 불가능하고 삭제도 불가능한지 검증",
                         () -> assertEquals(false, businessFlight.addPassenger(mike)),
                         () -> assertEquals(0, businessFlight.getPassengersList().size()),
                         () -> assertEquals(false, businessFlight.removePassenger(mike)),
@@ -113,13 +113,13 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a VIP passenger")
+        @DisplayName("When VIP 승객은")
         class VipPassenger {
 
             @Test
-            @DisplayName("Then you can add him but cannot remove him from a business flight")
+            @DisplayName("Then 비즈니스 항공편에서 추가가 가능하지만 삭제는 불가능하다")
             public void testBusinessFlightVipPassenger() {
-                assertAll("Verify all conditions for a VIP passenger and a business flight",
+                assertAll("VIP 승객은 비즈니스 항공편에서 추가가 가능하지만 삭제는 불가능한지 검증",
                         () -> assertEquals(true, businessFlight.addPassenger(james)),
                         () -> assertEquals(1, businessFlight.getPassengersList().size()),
                         () -> assertEquals(false, businessFlight.removePassenger(james)),
@@ -129,7 +129,7 @@ public class AirportTest {
         }
     }
 
-    @DisplayName("Given there is a premium flight")
+    @DisplayName("Given 프리미엄 항공편에서")
     @Nested
     class PremiumFlightTest {
         private Flight premiumFlight;
@@ -144,13 +144,13 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a regular passenger")
+        @DisplayName("When 일반 승객은")
         class RegularPassenger {
 
             @Test
-            @DisplayName("Then you cannot add or remove him from a premium flight")
+            @DisplayName("Then 프리미엄 항공편에서 추가가 불가능하고 삭제도 불가능하다")
             public void testPremiumFlightRegularPassenger() {
-                assertAll("Verify all conditions for a regular passenger and a premium flight",
+                assertAll("프리미엄 항공편에서 추가가 불가능하고 삭제도 불가능한지 검증",
                         () -> assertEquals(false, premiumFlight.addPassenger(mike)),
                         () -> assertEquals(0, premiumFlight.getPassengersList().size()),
                         () -> assertEquals(false, premiumFlight.removePassenger(mike)),
@@ -160,13 +160,13 @@ public class AirportTest {
         }
 
         @Nested
-        @DisplayName("When we have a VIP passenger")
+        @DisplayName("When VIP 승객은")
         class VipPassenger {
 
             @Test
-            @DisplayName("Then you can add and remove him from a premium flight")
+            @DisplayName("Then 프리미엄 항공편에서 추가가 가능하고 삭제도 가능하다")
             public void testPremiumFlightVipPassenger() {
-                assertAll("Verify all conditions for a VIP passenger and a premium flight",
+                assertAll("VIP 승객은 프리미엄 항공편에서 추가가 가능하고 삭제도 가능한지 검증",
                         () -> assertEquals(true, premiumFlight.addPassenger(james)),
                         () -> assertEquals(1, premiumFlight.getPassengersList().size()),
                         () -> assertEquals(true, premiumFlight.removePassenger(james)),
