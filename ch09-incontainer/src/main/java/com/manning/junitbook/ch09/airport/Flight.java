@@ -44,7 +44,7 @@ public class Flight {
 
     public void setSeats(int seats) {
         if (passengers.size() > seats) {
-            throw new RuntimeException("Cannot reduce seats under the number of existing passengers!");
+            throw new RuntimeException("현재 승객 수보다 적은 좌석을 설정할 수 없습니다!");
         }
         this.seats = seats;
     }
@@ -55,7 +55,7 @@ public class Flight {
 
     public boolean addPassenger(Passenger passenger) {
         if (passengers.size() >= seats) {
-            throw new RuntimeException("Cannot add more passengers than the capacity of the flight!");
+            throw new RuntimeException("좌석 수보다 더 많은 승객을 추가할 수 없습니다!");
         }
         return passengers.add(passenger);
     }
