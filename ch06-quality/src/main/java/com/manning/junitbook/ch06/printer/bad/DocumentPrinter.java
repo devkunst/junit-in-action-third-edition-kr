@@ -19,26 +19,42 @@
  * ========================================================================
  */
 
-package com.manning.junitbook.ch06;
+package com.manning.junitbook.ch06.printer.bad;
 
-public class Calculator {
-    public double add(double number1, double number2) {
-        return number1 + number2;
+public class DocumentPrinter {
+
+    private Document document;
+
+    public DocumentPrinter(Document document) {
+        this.document = document;
     }
 
-    public double sqrt(double x) {
-        if (x < 0) {
-            throw new IllegalArgumentException("음수의 제곱근을 구할 수 없다");
+    public void printDocument() {
+        switch (document.getDocumentType()) {
+            case WORD_DOCUMENT:
+                printWORDDocument();
+                break;
+            case PDF_DOCUMENT:
+                printPDFDocument();
+                break;
+            case TEXT_DOCUMENT:
+                printTextDocument();
+                break;
+            default:
+                printBinaryDocument();
+                break;
         }
-        return Math.sqrt(x);
     }
 
-    public double divide(double x, double y) {
-        if (y == 0) {
-            throw new ArithmeticException("0으로 나눌 수 없다");
-        }
-        return x / y;
+    private void printBinaryDocument() {
     }
 
+    private void printTextDocument() {
+    }
 
+    private void printPDFDocument() {
+    }
+
+    private void printWORDDocument() {
+    }
 }
