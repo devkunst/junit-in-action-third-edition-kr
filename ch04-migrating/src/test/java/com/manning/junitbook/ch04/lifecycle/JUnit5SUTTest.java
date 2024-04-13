@@ -33,7 +33,7 @@ class JUnit5SUTTest {
 
     @BeforeAll
     static void setUpClass() {
-        resourceForAllTests = new ResourceForAllTests("Our resource for all tests");
+        resourceForAllTests = new ResourceForAllTests("테스트를 위한 리소스");
     }
 
     @AfterAll
@@ -43,7 +43,7 @@ class JUnit5SUTTest {
 
     @BeforeEach
     void setUp() {
-        systemUnderTest = new SUT("Our system under test");
+        systemUnderTest = new SUT("테스트 대상 시스템");
     }
 
     @AfterEach
@@ -68,6 +68,6 @@ class JUnit5SUTTest {
     @Test
     @Disabled
     void myThirdTest() {
-        assertEquals(2, 1, "2 is not equal to 1");
+        assertEquals(2, 1, "2와 1이 다른지 검증");
     }
 }

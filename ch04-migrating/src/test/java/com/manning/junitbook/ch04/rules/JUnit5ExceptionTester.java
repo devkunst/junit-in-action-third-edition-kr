@@ -34,12 +34,12 @@ public class JUnit5ExceptionTester {
     @Test
     public void expectIllegalArgumentException() {
         Throwable throwable = assertThrows(IllegalArgumentException.class, () -> calculator.sqrt(-1));
-        assertEquals("Cannot extract the square root of a negative value", throwable.getMessage());
+        assertEquals("음수의 제곱근을 구할 수 없다", throwable.getMessage());
     }
 
     @Test
     public void expectArithmeticException() {
         Throwable throwable = assertThrows(ArithmeticException.class, () -> calculator.divide(1, 0));
-        assertEquals("Cannot divide by zero", throwable.getMessage());
+        assertEquals("0으로 나눌 수 없다", throwable.getMessage());
     }
 }

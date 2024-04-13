@@ -28,14 +28,14 @@ public class Calculator {
 
     public double sqrt(double x) {
         if (x < 0) {
-            throw new IllegalArgumentException("Cannot extract the square root of a negative value");
+            throw new IllegalArgumentException("음수의 제곱근을 구할 수 없다");
         }
         return Math.sqrt(x);
     }
 
     public double divide(double x, double y) {
         if (y == 0) {
-            throw new ArithmeticException("Cannot divide by zero");
+            throw new ArithmeticException("0으로 나눌 수 없다");
         }
         return x / y;
     }

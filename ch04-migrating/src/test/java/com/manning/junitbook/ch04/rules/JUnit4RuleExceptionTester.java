@@ -35,14 +35,14 @@ public class JUnit4RuleExceptionTester {
     @Test
     public void expectIllegalArgumentException() {
         expectedException.expect(IllegalArgumentException.class);
-        expectedException.expectMessage("Cannot extract the square root of a negative value");
+        expectedException.expectMessage("음수의 제곱근을 구할 수 없다");
         calculator.sqrt(-1);
     }
 
     @Test
     public void expectArithmeticException() {
         expectedException.expect(ArithmeticException.class);
-        expectedException.expectMessage("Cannot divide by zero");
+        expectedException.expectMessage("0으로 나눌 수 없다");
         calculator.divide(1, 0);
     }
 }

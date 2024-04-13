@@ -23,7 +23,7 @@ public class JUnit4SUTTest {
 
     @BeforeClass
     public static void setUpClass() {
-        resourceForAllTests = new ResourceForAllTests("Our resource for all tests");
+        resourceForAllTests = new ResourceForAllTests("테스트를 위한 리소스");
     }
 
     @AfterClass
@@ -33,7 +33,7 @@ public class JUnit4SUTTest {
 
     @Before
     public void setUp() {
-        systemUnderTest = new SUT("Our system under test");
+        systemUnderTest = new SUT("테스트 대상 시스템");
     }
 
     @After
@@ -58,6 +58,6 @@ public class JUnit4SUTTest {
     @Test
     @Ignore
     public void myThirdTest() {
-        assertEquals("2 is not equal to 1", 2, 1);
+        assertEquals("2와 1이 다른지 검증", 2, 1);
     }
 }

@@ -46,7 +46,7 @@ public class JUnit4HamcrestListTest {
         assertThat(values, hasSize(3));
         assertThat(values, hasItem(anyOf(equalTo("Oliver"), equalTo("Jack"),
                 equalTo("Harry"))));
-        assertThat("The list doesn't contain all the expected objects, in order", values, contains("Oliver", "Jack", "Harry"));
-        assertThat("The list doesn't contain all the expected objects", values, containsInAnyOrder("Jack", "Harry", "Oliver"));
+        assertThat("리스트의 순서에 맞게 객체를 포함하고 있는지 검증", values, contains("Oliver", "Jack", "Harry"));
+        assertThat("리스트의 순서에 상관없이 객체를 포함하고 있는지 검증", values, containsInAnyOrder("Jack", "Harry", "Oliver"));
     }
 }
