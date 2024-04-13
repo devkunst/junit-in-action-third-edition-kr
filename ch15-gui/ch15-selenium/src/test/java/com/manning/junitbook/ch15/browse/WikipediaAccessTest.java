@@ -45,11 +45,11 @@ public class WikipediaAccessTest {
         driver.get("https://en.wikipedia.org/");
         assertThat(driver.getTitle(), is("Wikipedia, the free encyclopedia"));
 
-        WebElement contents = driver.findElementByLinkText("Contents");
+        WebElement contents = driver.findElementByLinkText("Talk");
         assertTrue(contents.isDisplayed());
 
         contents.click();
-        assertThat(driver.getTitle(), is("Wikipedia:Contents - Wikipedia"));
+        assertThat(driver.getTitle(), is("Talk:Main Page - Wikipedia"));
     }
 
     @AfterEach

@@ -28,8 +28,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -48,7 +48,11 @@ public class GoogleSearchTest {
     private RemoteWebDriver driver;
 
     public static Collection<RemoteWebDriver> getBrowserVersions() {
-        return Arrays.asList(new RemoteWebDriver[]{new FirefoxDriver(), new ChromeDriver(), new InternetExplorerDriver()});
+        // 사용자의 환경에 따라 변경
+//        System.setProperty("webdriver.gecko.driver", "D:\\tools\\webdriver\\geckodriver.exe");
+//        System.setProperty("webdriver.chrome.driver", "D:\\tools\\webdriver\\chromedriver.exe");
+//        System.setProperty("webdriver.edge.driver", "D:\\tools\\webdriver\\msedgedriver.exe");
+        return Arrays.asList(new RemoteWebDriver[]{new ChromeDriver(), new FirefoxDriver(), new EdgeDriver()});
     }
 
     @ParameterizedTest
@@ -71,11 +75,11 @@ public class GoogleSearchTest {
         assertEquals("https://en.wikipedia.org/wiki/Main_Page", driver.getCurrentUrl());
         assertThat(driver.getTitle(), is("Wikipedia, the free encyclopedia"));
 
-        WebElement contents = driver.findElementByLinkText("Contents");
+        WebElement contents = driver.findElementByLinkText("Talk");
         assertTrue(contents.isDisplayed());
         contents.click();
 
-        assertThat(driver.getTitle(), is("Wikipedia:Contents - Wikipedia"));
+        assertThat(driver.getTitle(), is("Talk:Main Page - Wikipedia"));
     }
 
     @AfterEach

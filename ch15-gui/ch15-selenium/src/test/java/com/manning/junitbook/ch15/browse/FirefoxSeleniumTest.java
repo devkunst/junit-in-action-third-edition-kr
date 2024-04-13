@@ -43,7 +43,7 @@ public class FirefoxSeleniumTest {
     @Test
     void testFirefoxManning() {
         driver.get("https://www.manning.com/");
-        assertThat(driver.getTitle(), is("Manning | Home"));
+        assertThat(driver.getTitle(), is("Manning"));
     }
 
     @Test
