@@ -29,9 +29,9 @@ import com.manning.junitbook.ch12.lifecycle.SUT;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@Disabled("Feature is still under construction.")
+@Disabled("기능이 아직 개발 중")
 class DisabledClassTest {
-    private SUT systemUnderTest = new SUT("Our system under test");
+    private SUT systemUnderTest = new SUT("테스트 대상 시스템");
 
     @Test
     void testUsualWork() {

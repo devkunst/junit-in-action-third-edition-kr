@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DisabledMethodsTest {
-    private SUT systemUnderTest = new SUT("Our system under test");
+    private SUT systemUnderTest = new SUT("테스트 대상 시스템");
 
     @Test
     @Disabled
@@ -41,7 +41,7 @@ class DisabledMethodsTest {
     }
 
     @Test
-    @Disabled("Feature still under construction.")
+    @Disabled("기능이 아직 개발 중")
     void testAdditionalWork() {
         boolean canReceiveAdditionalWork = systemUnderTest.canReceiveAdditionalWork();
 
