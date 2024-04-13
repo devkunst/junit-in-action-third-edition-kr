@@ -18,7 +18,7 @@
  *
  * ========================================================================
  */
-package com.testeddatasystems.flights;
+package com.testeddatasystems.flightsmanagement;
 
 import org.junit.jupiter.api.Test;
 
