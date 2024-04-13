@@ -35,7 +35,7 @@ class TestInfoTest {
     @BeforeEach
     void setUp(TestInfo testInfo) {
         String displayName = testInfo.getDisplayName();
-        assertTrue(displayName.equals("display name of the method") || displayName.equals("testGetNameOfTheMethod(TestInfo)"));
+        assertTrue(displayName.equals("사용자 정의한 디스플레이 네임") || displayName.equals("testGetNameOfTheMethod(TestInfo)"));
     }
 
     @Test
@@ -44,8 +44,8 @@ class TestInfoTest {
     }
 
     @Test
-    @DisplayName("display name of the method")
+    @DisplayName("사용자 정의한 디스플레이 네임")
     void testGetNameOfTheMethodWithDisplayNameAnnotation(TestInfo testInfo) {
-        assertEquals("display name of the method", testInfo.getDisplayName());
+        assertEquals("사용자 정의한 디스플레이 네임", testInfo.getDisplayName());
     }
 }

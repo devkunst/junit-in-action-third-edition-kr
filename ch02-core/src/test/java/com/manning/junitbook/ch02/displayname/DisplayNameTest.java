@@ -26,12 +26,12 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@DisplayName("Test class showing the @DisplayName annotation.")
+@DisplayName("@DisplayName을 사용한 테스트 클래스")
 class DisplayNameTest {
     private SUT systemUnderTest = new SUT();
 
     @Test
-    @DisplayName("Our system under test says hello.")
+    @DisplayName("hello 테스트 대상 시스템!")
     void testHello() {
         assertEquals("Hello", systemUnderTest.hello());
     }

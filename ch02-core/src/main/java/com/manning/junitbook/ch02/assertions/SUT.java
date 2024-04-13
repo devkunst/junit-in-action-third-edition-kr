@@ -65,7 +65,7 @@ public class SUT {
             System.out.println("Running job: " + currentJob);
             return;
         }
-        throw new NoJobException("No jobs on the execution list!");
+        throw new NoJobException("실행할 작업이 없습니다!");
     }
 
     public void run(int jobDuration) throws InterruptedException {
@@ -75,6 +75,6 @@ public class SUT {
             Thread.sleep(jobDuration);
             return;
         }
-        throw new NoJobException("No jobs on the execution list!");
+        throw new NoJobException("실행할 작업이 없습니다!");
     }
 }

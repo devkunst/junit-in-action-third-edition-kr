@@ -47,19 +47,19 @@ public class HamcrestListTest {
     }
 
     @Test
-    @DisplayName("List without Hamcrest will intentionally fail to show how failing information is displayed")
+    @DisplayName("Hamcrest를 사용하지 않아 실패 정보를 자세히 표현하지 못하는 테스트")
     public void testListWithoutHamcrest() {
         assertEquals(3, values.size());
         assertTrue(values.contains("Oliver") || values.contains("Jack") || values.contains("Harry"));
     }
 
     @Test
-    @DisplayName("List with Hamcrest will intentionally fail to show how failing information is displayed")
+    @DisplayName("Hamcrest를 사용해서 자세한 실패 정보를 나타내는 테스트")
     public void testListWithHamcrest() {
         assertThat(values, hasSize(3));
         assertThat(values, hasItem(anyOf(equalTo("Oliver"), equalTo("Jack"),
                 equalTo("Harry"))));
-        assertThat("The list doesn't contain all the expected objects, in order", values, contains("Oliver", "Jack", "Harry"));
-        assertThat("The list doesn't contain all the expected objects", values, containsInAnyOrder("Jack", "Harry", "Oliver"));
+        assertThat("리스트의 순서에 맞게 객체를 포함하고 있는지 검증", values, contains("Oliver", "Jack", "Harry"));
+        assertThat("리스트의 순서에 상관없이 객체를 포함하고 있는지 검증", values, containsInAnyOrder("Jack", "Harry", "Oliver"));
     }
 }

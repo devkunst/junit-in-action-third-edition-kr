@@ -32,7 +32,7 @@ class SUTTest {
 
     @BeforeAll
     static void setUpClass() {
-        resourceForAllTests = new ResourceForAllTests("Our resource for all tests");
+        resourceForAllTests = new ResourceForAllTests("테스트를 위한 리소스");
     }
 
     @AfterAll
@@ -42,7 +42,7 @@ class SUTTest {
 
     @BeforeEach
     void setUp() {
-        systemUnderTest = new SUT("Our system under test");
+        systemUnderTest = new SUT("테스트 대상 시스템");
     }
 
     @AfterEach
