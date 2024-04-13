@@ -49,7 +49,7 @@ public class TestWebClientSkeleton {
     }
 
     @Test
-    @Disabled(value = "This is just the initial skeleton of a test. Therefore, if we run it now, it will fail.")
+    @Disabled(value = "단순한 테스트 스켈레톤이므로 현재 이 테스트를 실행하면 실패한다")
     public void testGetContentOk() throws MalformedURLException {
         WebClient client = new WebClient();
         String workingContent = client.getContent(new URL("http://localhost:8081/testGetContentOk"));
