@@ -39,7 +39,7 @@ public class ExecutionContextExtension implements ExecutionCondition {
                     .getResourceAsStream("context.properties"));
             executionContext = properties.getProperty("context");
             if (!"regular".equalsIgnoreCase(executionContext) && !"low".equalsIgnoreCase(executionContext)) {
-                return ConditionEvaluationResult.disabled("Test disabled outside regular and low contexts");
+                return ConditionEvaluationResult.disabled("regular 와 low 이외의 context(예컨대 peak)에서는 테스트가 실행되지 않는다");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
