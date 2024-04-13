@@ -40,14 +40,14 @@ public class WindowConfirmTest extends ManagedWebClient {
         URL testUrl = new URL("http://Page1/");
         MockWebConnection mockConnection = new MockWebConnection();
         final List<String> confirmMessages = new ArrayList<String>();
-        // set up
+        // 테스트 셋업
         webClient.setConfirmHandler((page, message) -> {
             confirmMessages.add(message);
             return true;
         });
         mockConnection.setResponse(testUrl, html);
         webClient.setWebConnection(mockConnection);
-        // go
+        // 태스트 진행
         HtmlPage firstPage = webClient.getPage(testUrl);
         WebAssert.assertTitleEquals(firstPage, "Hello");
         assertArrayEquals(new String[]{"Confirm Message"}, confirmMessages.toArray());
@@ -60,7 +60,7 @@ public class WindowConfirmTest extends ManagedWebClient {
         URL testUrl = new URL("http://Page1/");
         MockWebConnection mockConnection = new MockWebConnection();
         final List<String> confirmMessages = new ArrayList<String>();
-        // set up
+        // 테스트 셋업
         webClient.setAlertHandler(new CollectingAlertHandler());
         webClient.setConfirmHandler((page, message) -> {
             confirmMessages.add(message);
@@ -68,7 +68,7 @@ public class WindowConfirmTest extends ManagedWebClient {
         });
         mockConnection.setResponse(testUrl, html);
         webClient.setWebConnection(mockConnection);
-        // go
+        // 테스트 진행
         HtmlPage firstPage = webClient.getPage(testUrl);
         WebAssert.assertTitleEquals(firstPage, "Hello");
         assertArrayEquals(new String[]{"Confirm Message"}, confirmMessages.toArray());

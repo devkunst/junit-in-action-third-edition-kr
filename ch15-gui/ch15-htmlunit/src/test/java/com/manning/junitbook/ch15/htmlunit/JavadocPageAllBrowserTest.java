@@ -41,8 +41,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class JavadocPageAllBrowserTest {
 
     private static Collection<BrowserVersion[]> getBrowserVersions() {
-        return Arrays.asList(new BrowserVersion[][]{{BrowserVersion.FIREFOX_60},
-                {BrowserVersion.INTERNET_EXPLORER}, {BrowserVersion.CHROME},
+        return Arrays.asList(new BrowserVersion[][]{{BrowserVersion.FIREFOX_78},
+                {BrowserVersion.EDGE}, {BrowserVersion.CHROME},
                 {BrowserVersion.BEST_SUPPORTED}});
     }
 
