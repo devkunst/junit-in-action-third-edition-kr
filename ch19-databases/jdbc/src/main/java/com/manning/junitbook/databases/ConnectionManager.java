@@ -31,10 +31,10 @@ public class ConnectionManager {
     public static Connection openConnection() {
 
         try {
-            Class.forName("org.h2.Driver"); // this is driver for H2
+            Class.forName("org.h2.Driver"); // H2 드라이버
             connection = DriverManager.getConnection("jdbc:h2:~/country",
-                    "sa", // login
-                    "" // password
+                    "sa", // 아이디
+                    "" // 비밀번호
             );
             return connection;
         } catch (ClassNotFoundException | SQLException e) {
