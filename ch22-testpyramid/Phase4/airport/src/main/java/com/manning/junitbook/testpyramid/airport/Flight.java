@@ -43,7 +43,7 @@ public class Flight {
 	public Flight(String flightNumber, int seats) {
         Matcher matcher = pattern.matcher(flightNumber);
         if(!matcher.matches()) {
-            throw new RuntimeException("Invalid flight number");
+            throw new RuntimeException("항공편명이 적절하지 않습니다");
         }
 		this.flightNumber = flightNumber;
 		this.seats = seats;
@@ -62,7 +62,7 @@ public class Flight {
 
     public void setSeats(int seats) {
         if(passengersSet.size() > seats) {
-            throw new RuntimeException("Cannot reduce the number of seats under the number of existing passengers!");
+            throw new RuntimeException("현재 승객 수보다 적은 좌석을 설정할 수 없습니다");
         }
         this.seats = seats;
     }
@@ -73,7 +73,7 @@ public class Flight {
 
     public boolean addPassenger(Passenger passenger) {
         if(passengersSet.size() >= seats) {
-            throw new RuntimeException("Not enough seats!");
+            throw new RuntimeException("항공편의 좌석 수보다 더 많은 승객을 추가할 수 없습니다");
         }
         return passengersSet.add(passenger);
     }
@@ -88,7 +88,7 @@ public class Flight {
 
     public void setOrigin(String origin) {
         if(takenOff){
-            throw new RuntimeException("Flight cannot change its origin any longer!");
+            throw new RuntimeException("이륙한 후에는 출발지를 바꿀 수 없습니다");
         }
         this.origin = origin;
     }
@@ -99,7 +99,7 @@ public class Flight {
 
     public void setDestination(String destination) {
         if(landed){
-            throw new RuntimeException("Flight cannot change its destination any longer!");
+            throw new RuntimeException("착륙한 후에는 목적지를 바꿀 수 없습니다");
         }
         this.destination = destination;
     }

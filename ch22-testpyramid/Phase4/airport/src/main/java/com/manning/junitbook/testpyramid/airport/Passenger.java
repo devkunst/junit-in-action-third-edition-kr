@@ -40,10 +40,10 @@ public class Passenger {
 		pattern = countryCode.equals("US")? Pattern.compile(ssnRegex): Pattern.compile(nonUsIdentifierRegex);
 		Matcher matcher = pattern.matcher(identifier);
 		if(!matcher.matches()) {
-			throw new RuntimeException("Invalid identifier");
+			throw new RuntimeException("승객 식별자가 적절하지 않습니다");
 		}
 		if(!Arrays.asList(Locale.getISOCountries()).contains(countryCode)) {
-			throw new RuntimeException("Invalid country code");
+			throw new RuntimeException("국가 코드가 적절하지 않습니다");
 		}
 
 		this.identifier = identifier;
@@ -58,7 +58,7 @@ public class Passenger {
 	public void setIdentifier(String identifier) {
 		Matcher matcher = pattern.matcher(identifier);
 		if(!matcher.matches()) {
-			throw new RuntimeException("Invalid identifier");
+			throw new RuntimeException("승객 식별자가 적절하지 않습니다");
 		}
 		this.identifier = identifier;
 	}
@@ -77,7 +77,7 @@ public class Passenger {
 
 	public void setCountryCode(String countryCode) {
 		if(!Arrays.asList(Locale.getISOCountries()).contains(countryCode)) {
-			throw new RuntimeException("Invalid country code");
+			throw new RuntimeException("국가 코드가 적절하지 않습니다");
 		}
 		this.countryCode = countryCode;
 	}
