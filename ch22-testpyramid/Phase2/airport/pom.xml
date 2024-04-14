@@ -61,6 +61,7 @@
             <version>5.6.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- Junit 4.12를 사용하기 위해 여기서는 junit-vintage-engine 이 아니라 junit-platform-runner 사용(의존성 트리에서 확인) -->
         <dependency>
             <groupId>org.junit.platform</groupId>
             <artifactId>junit-platform-runner</artifactId>
