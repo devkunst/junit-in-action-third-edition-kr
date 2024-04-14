@@ -1,43 +1,42 @@
-Meta: Passengers Policy
-      The company follows a policy of adding and removing passengers, depending on the passenger type
-      and on the flight type
+Meta: 승객 정책
+      회사는 승객 유형과 항공편 유형에 따라 항공편에 승객을 추가하거나 삭제하는 정책을 결정한다
 
 Narrative:
-As a company
-I want to be able to manage passengers and flights
-So that the policies of the company are followed
+회사는
+승객과 항공편을 관리해야 한다
+회사의 승객 관리 정책은 다음과 같다
 
-Scenario: Economy flight, regular passenger
-Given there is an economy flight
-When we have a regular passenger
-Then you can add and remove him from an economy flight
-And you cannot add a regular passenger to an economy flight more than once
+Scenario: 이코노미 항공편에서 일반 승객에 관한 정책
+Given 이코노미 항공편에서
+When 일반 승객은
+Then 이코노미 항공편에서 추가가 가능하고 삭제도 가능하다
+And 이코노미 항공편에 일반 승객을 중복해서 추가할 수 없다
 
-Scenario: Economy flight, VIP passenger
-Given there is an economy flight
-When we have a VIP passenger
-Then you can add him but cannot remove him from an economy flight
-And you cannot add a VIP passenger to an economy flight more than once
+Scenario: 이코노미 항공편에서 VIP 승객에 관한 정책
+Given 이코노미 항공편에서
+When VIP 승객은
+Then 이코노미 항공편에서 추가가 가능하지만 삭제는 불가능하다
+And 이코노미 항공편에 VIP 승객을 중복해서 추가할 수 없다
 
-Scenario: Business flight, regular passenger
-Given there is a business flight
-When we have a regular passenger
-Then you cannot add or remove him from a business flight
+Scenario: 비즈니스 항공편에서 일반 승객에 관한 정책
+Given 비즈니스 항공편에서
+When 일반 승객은
+Then 비즈니스 항공편에서 추가가 불가능하고 삭제도 불가능하다
 
 
-Scenario: Business flight, VIP passenger
-Given there is a business flight
-When we have a VIP passenger
-Then you can add him but cannot remove him from a business flight
-And you cannot add a VIP passenger to a business flight more than once
+Scenario: 비즈니스 항공편에서 VIP 승객에 관한 정책
+Given 비즈니스 항공편에서
+When VIP 승객은
+Then 비즈니스 항공편에서 추가가 가능하지만 삭제는 불가능하다
+And 비즈니스 항공편에 VIP 승객을 중복해서 추가할 수 없다
 
-Scenario: Premium flight, regular passenger
-Given there is a premium flight
-When we have a regular passenger
-Then you cannot add or remove him from a premium flight
+Scenario: 프리미엄 항공편에서 일반 승객에 관한 정책
+Given 프리미엄 항공편에서
+When 일반 승객은
+Then 프리미엄 항공편에서 추가가 불가능하고 삭제도 불가능하다
 
-Scenario: Premium flight, VIP passenger
-Given there is a premium flight
-When we have a VIP passenger
-Then you can add and remove him from a premium flight
-And you cannot add a VIP passenger to a premium flight more than once
+Scenario: 프리미엄 항공편에서 VIP 승객에 관한 정책
+Given 프리미엄 항공편에서
+When VIP 승객은
+Then 프리미엄 항공편에서 추가가 가능하고 삭제도 가능하다
+And 프리미엄 항공편에 VIP 승객을 중복해서 추가할 수 없다
