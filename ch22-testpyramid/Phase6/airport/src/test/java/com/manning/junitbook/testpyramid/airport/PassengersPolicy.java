@@ -36,13 +36,13 @@ public class PassengersPolicy {
     private List<Passenger> vipPassengers = new ArrayList<>();
     private Flight anotherFlight = new Flight("AA7890", 48);
 
-    @Given("^there is a flight having number \"([^\"]*)\" and (\\d+) seats with passengers defined into \"([^\"]*)\"$")
-    public void there_is_a_flight_having_number_and_seats_with_passengers_defined_into(String flightNumber, int seats, String fileName) throws Throwable {
+    @Given("^항공편명이 \"([^\"]*)\" 이고 좌석 수가 (\\d+) 인 항공편과 \"([^\"]*)\"에 정의되어 있는 승객 정보가 있는 상황에서$")
+    public void 항공편명이_이고_좌석_수가_인_항공편과_에_정의되어_있는_승객_정보가_있는_상황에서(String flightNumber, int seats, String fileName) throws Throwable {
         flight = FlightBuilderUtil.buildFlightFromCsv(flightNumber, seats, "src/test/resources/" + fileName);
     }
 
-    @When("^we have regular passengers$")
-    public void we_have_regular_passengers() {
+    @When("^일반 승객은$")
+    public void 일반_승객은() {
         for (Passenger passenger : flight.getPassengers()) {
             if (!passenger.isVip()) {
                 regularPassengers.add(passenger);
@@ -50,22 +50,22 @@ public class PassengersPolicy {
         }
     }
 
-    @Then("^you can remove them from the flight$")
-    public void you_can_remove_them_from_the_flight() {
+    @Then("^항공편에서 삭제할 수 있다$")
+    public void 항공편에서_삭제할_수_있다() {
         for (Passenger passenger : regularPassengers) {
             assertTrue(flight.removePassenger(passenger));
         }
     }
 
-    @Then("^add them to another flight$")
-    public void add_them_to_another_flight() {
+    @Then("^다른 항공편에 추가할 수 있다$")
+    public void 다른_항공편에_추가할_수_있다() {
         for (Passenger passenger : regularPassengers) {
             assertTrue(anotherFlight.addPassenger(passenger));
         }
     }
 
-    @When("^we have VIP passengers$")
-    public void we_have_VIP_passengers() {
+    @When("^VIP 승객은$")
+    public void vip_승객은() {
         for (Passenger passenger : flight.getPassengers()) {
             if (passenger.isVip()) {
                 vipPassengers.add(passenger);
@@ -73,8 +73,8 @@ public class PassengersPolicy {
         }
     }
 
-    @Then("^you cannot remove them from the flight$")
-    public void you_cannot_remove_them_from_the_flight() {
+    @Then("^항공편에서 삭제할 수 없다$")
+    public void 항공편에서_삭제할_수_없다() {
         for (Passenger passenger : vipPassengers) {
             assertFalse(flight.removePassenger(passenger));
         }
