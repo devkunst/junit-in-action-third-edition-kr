@@ -28,26 +28,26 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PassengerPolicy {
+public class PassengersPolicy {
     private Flight economyFlight;
     private Flight businessFlight;
     private Flight premiumFlight;
     private Passenger mike;
     private Passenger john;
 
-    @Given("^there is an economy flight$")
-    public void there_is_an_economy_flight() throws Throwable {
+    @Given("^이코노미 항공편에서$")
+    public void 이코노미_항공편에서() throws Throwable {
         economyFlight = new EconomyFlight("1");
     }
 
-    @When("^we have a regular passenger$")
-    public void we_have_a_regular_passenger() throws Throwable {
+    @When("^일반 승객은$")
+    public void 일반_승객은() throws Throwable {
         mike = new Passenger("Mike", false);
     }
 
-    @Then("^you can add and remove him from an economy flight$")
-    public void you_can_add_and_remove_him_from_an_economy_flight() throws Throwable {
-        assertAll("Verify all conditions for a regular passenger and an economy flight",
+    @Then("^이코노미 항공편에서 추가가 가능하고 삭제도 가능하다$")
+    public void 이코노미_항공편에서_추가가_가능하고_삭제도_가능하다() throws Throwable {
+        assertAll("일반 승객은 이코노미 항공편에서 추가가 가능하고 삭제도 가능한지 검증",
                 () -> assertEquals("1", economyFlight.getId()),
                 () -> assertEquals(true, economyFlight.addPassenger(mike)),
                 () -> assertEquals(1, economyFlight.getPassengersSet().size()),
@@ -57,26 +57,26 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you cannot add a regular passenger to an economy flight more than once$")
-    public void add_a_regular_passenger_to_an_economy_flight_more_than_once() throws Throwable {
+    @Then("^이코노미 항공편에 일반 승객을 중복해서 추가할 수 없다$")
+    public void 이코노미_항공편에_일반_승객을_중복해서_추가할_수_없다() throws Throwable {
         for (int i = 0; i < 10; i++) {
             economyFlight.addPassenger(mike);
         }
-        assertAll("Verify a regular passenger can be added to an economy flight only once",
+        assertAll("이코노미 항공편에 일반 승객을 중복해서 추가할 수 없는지 검증",
                 () -> assertEquals(1, economyFlight.getPassengersSet().size()),
                 () -> assertTrue(economyFlight.getPassengersSet().contains(mike)),
                 () -> assertTrue(new ArrayList<>(economyFlight.getPassengersSet()).get(0).getName().equals("Mike"))
         );
     }
 
-    @When("^we have a VIP passenger$")
-    public void we_have_a_VIP_passenger() throws Throwable {
+    @When("^VIP 승객은$")
+    public void vip_승객은() throws Throwable {
         john = new Passenger("John", true);
     }
 
-    @Then("^you can add him but cannot remove him from an economy flight$")
-    public void you_can_add_him_but_cannot_remove_him_from_an_economy_flight() throws Throwable {
-        assertAll("Verify all conditions for a VIP passenger and an economy flight",
+    @Then("^이코노미 항공편에서 추가가 가능하지만 삭제는 불가능하다$")
+    public void 이코노미_항공편에서_추가가_가능하지만_삭제는_불가능하다() throws Throwable {
+        assertAll("VIP 승객은 이코노미 항공편에서 추가가 가능하지만 삭제는 불가능한지 검증",
                 () -> assertEquals("1", economyFlight.getId()),
                 () -> assertEquals(true, economyFlight.addPassenger(john)),
                 () -> assertEquals(1, economyFlight.getPassengersSet().size()),
@@ -86,27 +86,27 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you cannot add a VIP passenger to an economy flight more than once$")
-    public void you_cannot_add_a_VIP_passenger_to_an_economy_flight_more_than_once() throws Throwable {
+    @Then("^이코노미 항공편에 VIP 승객을 중복해서 추가할 수 없다$")
+    public void 이코노미_항공편에_VIP_승객을_중복해서_추가할_수_없다() throws Throwable {
         for (int i = 0; i < 10; i++) {
             economyFlight.addPassenger(john);
         }
 
-        assertAll("Verify a VIP passenger can be added to an economy flight only once",
+        assertAll("이코노미 항공편에 VIP 승객을 중복해서 추가할 수 없는지 검증",
                 () -> assertEquals(1, economyFlight.getPassengersSet().size()),
                 () -> assertTrue(economyFlight.getPassengersSet().contains(john)),
                 () -> assertTrue(new ArrayList<>(economyFlight.getPassengersSet()).get(0).getName().equals("John"))
         );
     }
 
-    @Given("^there is a business flight$")
-    public void there_is_an_business_flight() throws Throwable {
+    @Given("^비즈니스 항공편에서$")
+    public void 비즈니스_항공편에서() throws Throwable {
         businessFlight = new BusinessFlight("2");
     }
 
-    @Then("^you cannot add or remove him from a business flight$")
-    public void you_cannot_add_or_remove_him_from_a_business_flight() throws Throwable {
-        assertAll("Verify all conditions for a regular passenger and a business flight",
+    @Then("^비즈니스 항공편에서 추가가 불가능하고 삭제도 불가능하다$")
+    public void 비즈니스_항공편에서_추가가_불가능하고_삭제도_불가능하다() throws Throwable {
+        assertAll("일반 승객은 비즈니스 항공편에서 추가가 불가능하고 삭제도 불가능한지 검증",
                 () -> assertEquals(false, businessFlight.addPassenger(mike)),
                 () -> assertEquals(0, businessFlight.getPassengersSet().size()),
                 () -> assertEquals(false, businessFlight.removePassenger(mike)),
@@ -114,9 +114,9 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you can add him but cannot remove him from a business flight$")
-    public void you_can_add_him_but_cannot_remove_him_from_a_business_flight() throws Throwable {
-        assertAll("Verify all conditions for a VIP passenger and a business flight",
+    @Then("^비즈니스 항공편에서 추가가 가능하지만 삭제는 불가능하다$")
+    public void 비즈니스_항공편에서_추가가_가능하지만_삭제는_불가능하다() throws Throwable {
+        assertAll("VIP 승객은 비즈니스 항공편에서 추가가 가능하지만 삭제는 불가능한지 검증",
                 () -> assertEquals(true, businessFlight.addPassenger(john)),
                 () -> assertEquals(1, businessFlight.getPassengersSet().size()),
                 () -> assertEquals(false, businessFlight.removePassenger(john)),
@@ -124,27 +124,27 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you cannot add a VIP passenger to a business flight more than once$")
-    public void you_cannot_add_a_VIP_passenger_to_a_business_flight_more_than_once() throws Throwable {
+    @Then("^비즈니스 항공편에 VIP 승객을 중복해서 추가할 수 없다$")
+    public void 비즈니스_항공편에_VIP_승객을_중복해서_추가할_수_없다() throws Throwable {
         for (int i = 0; i < 10; i++) {
             businessFlight.addPassenger(john);
         }
 
-        assertAll("Verify a VIP passenger can be added to a business flight only once",
+        assertAll("비즈니스 항공편에 VIP 승객을 중복해서 추가할 수 없는지 검증",
                 () -> assertEquals(1, businessFlight.getPassengersSet().size()),
                 () -> assertTrue(businessFlight.getPassengersSet().contains(john)),
                 () -> assertTrue(new ArrayList<>(businessFlight.getPassengersSet()).get(0).getName().equals("John"))
         );
     }
 
-    @Given("^there is a premium flight$")
-    public void thereIsAnPremiumFlight() throws Throwable {
+    @Given("^프리미엄 항공편에서$")
+    public void 프리미엄_항공편에서() throws Throwable {
         premiumFlight = new PremiumFlight("3");
     }
 
-    @Then("^you cannot add or remove him from a premium flight$")
-    public void there_is_an_premium_flight() throws Throwable {
-        assertAll("Verify all conditions for a regular passenger and a premium flight",
+    @Then("^프리미엄 항공편에서 추가가 불가능하고 삭제도 불가능하다$")
+    public void 프리미엄_항공편에서_추가가_불가능하고_삭제도_불가능하다() throws Throwable {
+        assertAll("일반 승객은 프리미엄 항공편에서 추가가 불가능하고 삭제도 불가능한지 검증",
                 () -> assertEquals(false, premiumFlight.addPassenger(mike)),
                 () -> assertEquals(0, premiumFlight.getPassengersSet().size()),
                 () -> assertEquals(false, premiumFlight.removePassenger(mike)),
@@ -152,9 +152,9 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you can add and remove him from a premium flight$")
-    public void you_cannot_add_or_remove_him_from_a_premium_flight() throws Throwable {
-        assertAll("Verify all conditions for a VIP passenger and a premium flight",
+    @Then("^프리미엄 항공편에서 추가가 가능하고 삭제도 가능하다$")
+    public void 프리미엄_항공편에서_추가가_가능하고_삭제도_가능하다() throws Throwable {
+        assertAll("VIP 승객은 프리미엄 항공편에서 추가가 가능하고 삭제도 가능한지 검증",
                 () -> assertEquals(true, premiumFlight.addPassenger(john)),
                 () -> assertEquals(1, premiumFlight.getPassengersSet().size()),
                 () -> assertEquals(true, premiumFlight.removePassenger(john)),
@@ -162,13 +162,13 @@ public class PassengerPolicy {
         );
     }
 
-    @Then("^you cannot add a VIP passenger to a premium flight more than once$")
-    public void you_cannot_add_a_VIP_passenger_to_a_premium_flight_more_than_once() throws Throwable {
+    @Then("^프리미엄 항공편에 VIP 승객을 중복해서 추가할 수 없다$")
+    public void 프리미엄_항공편에_VIP_승객을_중복해서_추가할_수_없다() throws Throwable {
         for (int i = 0; i < 10; i++) {
             premiumFlight.addPassenger(john);
         }
 
-        assertAll("Verify a VIP passenger can be added to a premium flight only once",
+        assertAll("프리미엄 항공편에 VIP 승객을 중복해서 추가할 수 없는지 검증",
                 () -> assertEquals(1, premiumFlight.getPassengersSet().size()),
                 () -> assertTrue(premiumFlight.getPassengersSet().contains(john)),
                 () -> assertTrue(new ArrayList<>(premiumFlight.getPassengersSet()).get(0).getName().equals("John"))

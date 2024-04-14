@@ -1,10 +1,10 @@
-Feature: Bonus Policy
-  The company follows a bonus policy, depending on the passenger type and on the mileage
+Feature: 보너스 포인트 정책
+  회사는 승객 유형과 마일리지에 따라 보너스 포인트를 계산하는 정책을 결정한다
 
-  Scenario Outline: Regular passenger bonus policy
-    Given we have a regular passenger with a mileage
-    When the regular passenger travels <mileage1> and <mileage2> and <mileage3>
-    Then the bonus points of the regular passenger should be <points>
+  Scenario Outline: 일반 승객에 대한 보너스 포인트 정책
+    Given 마일리지와 일반 승객이 있는 상황에서
+    When 일반 승객이 가지고 있는 마일리지가 <mileage1>과 <mileage2>와 <mileage3>일 때
+    Then 일반 승객의 보너스 포인트는 <points>가 된다
 
     Examples:
       | mileage1 | mileage2 | mileage3| points |
@@ -14,10 +14,10 @@ Feature: Bonus Policy
       |     482  |      98  |    591  |     58 |
       |     128  |     176  |    304  |     30 |
 
-  Scenario Outline: VIP passenger bonus policy
-    Given we have a VIP passenger with a mileage
-    When the VIP passenger travels <mileage1> and <mileage2> and <mileage3>
-    Then the bonus points of the VIP passenger should be <points>
+  Scenario Outline: VIP 승객에 대한 보너스 포인트 정책
+    Given 마일리지와 VIP 승객이 있는 상황에서
+    When VIP 승객이 가지고 있는 마일리지가 <mileage1>과 <mileage2>와 <mileage3>일 때
+    Then VIP 승객의 보너스 포인트는 <points>가 된다
 
     Examples:
       | mileage1 | mileage2 | mileage3| points  |

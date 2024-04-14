@@ -32,40 +32,40 @@ public class BonusPolicy {
     private Passenger john;
     private Mileage mileage;
 
-    @Given("^we have a regular passenger with a mileage$")
-    public void we_have_a_regular_passenger_with_a_mileage() throws Throwable {
+    @Given("^마일리지와 일반 승객이 있는 상황에서$")
+    public void 마일리지와_일반_승객이_있는_상황에서() throws Throwable {
         mike = new Passenger("Mike", false);
         mileage = new Mileage();
     }
 
-    @When("^the regular passenger travels (\\d+) and (\\d+) and (\\d+)$")
-    public void the_regular_passenger_travels_and_and(int mileage1, int mileage2, int mileage3) throws Throwable {
+    @When("^일반 승객이 가지고 있는 마일리지가 (\\d+)과 (\\d+)와 (\\d+)일 때$")
+    public void 일반_승객이_가지고_있는_마일리지가_과_와_일_때(int mileage1, int mileage2, int mileage3) throws Throwable {
         mileage.addMileage(mike, mileage1);
         mileage.addMileage(mike, mileage2);
         mileage.addMileage(mike, mileage3);
     }
 
-    @Then("^the bonus points of the regular passenger should be (\\d+)$")
-    public void the_bonus_points_of_the_regular_passenger_should_be(int points) throws Throwable {
+    @Then("^일반 승객의 보너스 포인트는 (\\d+)가 된다$")
+    public void 일반_승객의_보너스_포인트는_가_된다(int points) throws Throwable {
         mileage.calculateGivenPoints();
         assertEquals(points, mileage.getPassengersPointsMap().get(mike).intValue());
     }
 
-    @Given("^we have a VIP passenger with a mileage$")
-    public void we_have_a_VIP_passenger_with_a_mileage() throws Throwable {
+    @Given("^마일리지와 VIP 승객이 있는 상황에서$")
+    public void 마일리지와_VIP_승객이_있는_상황에서() throws Throwable {
         john = new Passenger("John", true);
         mileage = new Mileage();
     }
 
-    @When("^the VIP passenger travels (\\d+) and (\\d+) and (\\d+)$")
-    public void the_VIP_passenger_travels_and_and(int mileage1, int mileage2, int mileage3) throws Throwable {
+    @When("^VIP 승객이 가지고 있는 마일리지가 (\\d+)과 (\\d+)와 (\\d+)일 때$")
+    public void vip_승객이_가지고_있는_마일리지가_과_와_일_때(int mileage1, int mileage2, int mileage3) throws Throwable {
         mileage.addMileage(john, mileage1);
         mileage.addMileage(john, mileage2);
         mileage.addMileage(john, mileage3);
     }
 
-    @Then("^the bonus points of the VIP passenger should be (\\d+)$")
-    public void the_bonus_points_of_the_VIP_passenger_should_be(int points) throws Throwable {
+    @Then("^VIP 승객의 보너스 포인트는 (\\d+)가 된다$")
+    public void VIP_승객의_보너스_포인트는_가_된다(int points) throws Throwable {
         mileage.calculateGivenPoints();
         assertEquals(points, mileage.getPassengersPointsMap().get(john).intValue());
     }
