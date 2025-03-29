@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+dependencies {
+    // JUnit Jupiter API
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    // JUnit Jupiter Engine
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+    // JUnit parameterized test
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.11.4'
+
+    // H2 Database
+    implementation 'com.h2database:h2:2.3.232'
+}
+
+test {
+    useJUnitPlatform()
+}
