@@ -1,0 +1,22 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+dependencies {
+    // JUnit Vintage Engine
+    implementation 'org.junit.vintage:junit-vintage-engine:5.11.4'
+}
+
+test {
+    useJUnitPlatform ()
+}
