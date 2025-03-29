@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'jacoco'
+}
+
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+dependencies {
+    // JUnit Jupiter API
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    // JUnit Jupiter Engine
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+jacoco {
+    toolVersion = "0.8.12"
+}
+
+jacocoTestReport {
+    reports {
+        html.required = true
+        xml.required = false
+        csv.required = false
+    }
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'PACKAGE'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.80  // example
+            }
+        }
+    }
+}
