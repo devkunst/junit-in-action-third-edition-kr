@@ -20,15 +20,21 @@ repositories {
     jcenter()
 }
 
+compileJava.options.encoding = "UTF-8"
+compileTestJava.options.encoding = "UTF-8"
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
 dependencies {
     // 애플리케이션에서 사용할 의존성
-    implementation 'com.google.guava:guava:27.1-jre'
+    implementation 'com.google.guava:guava:33.4.0-jre'
 
     // 테스트에 필요한 JUnit Jupiter API 의존성
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
 
     // 테스트에 필요한 JUnit Jupiter Engine 의존성
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
 }
 
 application {
