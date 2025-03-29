@@ -34,6 +34,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -65,7 +66,7 @@ public class GoogleSearchTest {
         driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
 
         // wait until the Google page shows the result
-        WebElement myDynamicElement = (new WebDriverWait(driver, 10))
+        WebElement myDynamicElement = (new WebDriverWait(driver, Duration.ofSeconds(10)))
                 .until(ExpectedConditions.presenceOfElementLocated(By.id("result-stats")));
 
         List<WebElement> findElements = driver.findElements(By.xpath("//*[@id='rso']//a/h3"));
@@ -75,7 +76,7 @@ public class GoogleSearchTest {
         assertEquals("https://en.wikipedia.org/wiki/Main_Page", driver.getCurrentUrl());
         assertThat(driver.getTitle(), is("Wikipedia, the free encyclopedia"));
 
-        WebElement contents = driver.findElementByLinkText("Talk");
+        WebElement contents = driver.findElement(By.linkText("Talk"));
         assertTrue(contents.isDisplayed());
         contents.click();
 

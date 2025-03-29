@@ -17,13 +17,13 @@
 
 package com.manning.junitbook.ch15.htmlunit;
 
+import org.htmlunit.MockWebConnection;
+import org.htmlunit.WebAssert;
+import org.htmlunit.html.HtmlPage;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.net.URL;
-
-import com.gargoylesoftware.htmlunit.MockWebConnection;
-import com.gargoylesoftware.htmlunit.WebAssert;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import org.junit.jupiter.api.Test;
 
 /**
  * Demonstrates using in-line HTML fixtures in test methods.

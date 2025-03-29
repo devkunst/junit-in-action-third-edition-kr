@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '2.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+
+dependencies {
+
+    // JUnit Jupiter API
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+    // JUnit Jupiter Engine
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+    // JUnit Vintage Engine
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.11.4'
+    // JUnit Jupiter Params
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.11.4'
+
+    // HtmlUnit
+    testImplementation 'org.htmlunit:htmlunit:4.7.0'
+
+    implementation 'org.w3c.css:sac:1.3'
+}
+
+test {
+    useJUnitPlatform()
+}

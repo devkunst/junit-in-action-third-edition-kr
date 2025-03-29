@@ -21,14 +21,12 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
-import com.gargoylesoftware.htmlunit.AlertHandler;
-import com.gargoylesoftware.htmlunit.CollectingAlertHandler;
-import com.gargoylesoftware.htmlunit.Page;
-import com.gargoylesoftware.htmlunit.WebAssert;
-import com.gargoylesoftware.htmlunit.html.HtmlForm;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
+import org.htmlunit.CollectingAlertHandler;
+import org.htmlunit.WebAssert;
+import org.htmlunit.html.HtmlForm;
+import org.htmlunit.html.HtmlPage;
+import org.htmlunit.html.HtmlSubmitInput;
+import org.htmlunit.html.HtmlTextInput;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,7 +59,7 @@ public class FormTest extends ManagedWebClient {
         HtmlSubmitInput submitButton = form.getInputByName("submit");
         HtmlPage resultPage = submitButton.click();
         WebAssert.assertTitleEquals(resultPage, page.getTitleText());
-        WebAssert.assertTextPresent(resultPage, page.asText());
+        WebAssert.assertTextPresent(resultPage, page.asNormalizedText());
 
         List<String> collectedAlerts = alertHandler.getCollectedAlerts();
         List<String> expectedAlerts = Collections.singletonList("Please enter a value.");

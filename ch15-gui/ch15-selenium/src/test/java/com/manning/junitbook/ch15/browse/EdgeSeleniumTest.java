@@ -18,26 +18,44 @@
  *
  * ========================================================================
  */
-package com.manning.junitbook.ch15.htmlunit;
 
-import org.htmlunit.WebClient;
+package com.manning.junitbook.ch15.browse;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 
-/**
- * Manages an HtmlUnit WebClient on behalf of subclasses. The class makes sure
- * the close() method is called when a test is done with a WebClient instance.
- */
-public abstract class ManagedWebClient {
-    protected WebClient webClient;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
+
+public class EdgeSeleniumTest {
+
+    private WebDriver driver;
 
     @BeforeEach
-    public void setUp() {
-        webClient = new WebClient();
+    void setUp() {
+        driver = new EdgeDriver();
     }
 
+    @Test
+    void testChromeManning() {
+        driver.get("https://www.manning.com/");
+        assertThat(driver.getTitle(), is("Manning"));
+    }
+
+    @Test
+    void testChromeGoogle() {
+        driver.get("https://www.google.com");
+        assertThat(driver.getTitle(), is("Google"));
+    }
+
+
     @AfterEach
-    public void tearDown() {
-        webClient.close();
+    void tearDown() {
+        driver.quit();
     }
 }

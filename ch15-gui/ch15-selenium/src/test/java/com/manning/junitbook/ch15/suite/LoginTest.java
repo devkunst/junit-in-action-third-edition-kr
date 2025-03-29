@@ -21,6 +21,7 @@
 package com.manning.junitbook.ch15.suite;
 
 import com.manning.junitbook.ch15.pages.Homepage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;

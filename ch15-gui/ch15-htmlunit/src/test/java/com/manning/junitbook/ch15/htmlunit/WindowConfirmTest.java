@@ -17,17 +17,19 @@
 
 package com.manning.junitbook.ch15.htmlunit;
 
+import org.htmlunit.CollectingAlertHandler;
+import org.htmlunit.FailingHttpStatusCodeException;
+import org.htmlunit.MockWebConnection;
+import org.htmlunit.WebAssert;
+import org.htmlunit.html.HtmlPage;
+import org.junit.jupiter.api.Test;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gargoylesoftware.htmlunit.*;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * Demonstrates testing a confirmation handler.
