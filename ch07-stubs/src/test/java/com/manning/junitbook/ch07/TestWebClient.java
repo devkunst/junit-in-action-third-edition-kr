@@ -20,22 +20,22 @@
  */
 package com.manning.junitbook.ch07;
 
-import java.io.IOException;
 import java.io.OutputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import jakarta.servlet.http.HttpServletResponse;
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.server.Response;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.eclipse.jetty.server.handler.ContextHandler;
+import org.eclipse.jetty.server.handler.ContextHandlerCollection;
+import org.eclipse.jetty.util.Callback;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mortbay.jetty.HttpHeaders;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.handler.AbstractHandler;
-import org.mortbay.jetty.servlet.Context;
-import org.mortbay.util.ByteArrayISO8859Writer;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -52,15 +52,19 @@ public class TestWebClient {
     public static void setUp() throws Exception {
         Server server = new Server(8081);
 
-        Context contentOkContext = new Context(server, "/testGetContentOk");
+        ContextHandler contentOkContext = new ContextHandler(server, "/testGetContentOk");
         contentOkContext.setHandler(new TestGetContentOkHandler());
 
-        Context contentErrorContext = new Context(server, "/testGetContentError");
+        ContextHandler contentErrorContext = new ContextHandler(server, "/testGetContentError");
         contentErrorContext.setHandler(new TestGetContentServerErrorHandler());
 
-        Context contentNotFoundContext = new Context(server, "/testGetContentNotFound");
+        ContextHandler contentNotFoundContext = new ContextHandler(server, "/testGetContentNotFound");
         contentNotFoundContext.setHandler(new TestGetContentNotFoundHandler());
 
+        ContextHandlerCollection contexts = new ContextHandlerCollection();
+        contexts.setHandlers(contentOkContext, contentErrorContext, contentNotFoundContext);
+
+        server.setHandler(contexts);
         server.setStopAtShutdown(true);
         server.start();
     }
@@ -80,15 +84,14 @@ public class TestWebClient {
      * Handler to handle the good requests to the server.
      */
     private static class TestGetContentOkHandler extends AbstractHandler {
-        public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException {
 
-            OutputStream out = response.getOutputStream();
-            ByteArrayISO8859Writer writer = new ByteArrayISO8859Writer();
-            writer.write("It works");
-            writer.flush();
-            response.setIntHeader(HttpHeaders.CONTENT_LENGTH, writer.size());
-            writer.writeTo(out);
-            out.flush();
+        @Override
+        public boolean handle(Request request, Response response, Callback callback) throws Exception {
+            response.setStatus(HttpServletResponse.SC_OK);
+            try (OutputStream out = Response.asBufferedOutputStream(request, response)) {
+                out.write("It works".getBytes(StandardCharsets.UTF_8));
+            }
+            return true;
         }
     }
 
@@ -97,8 +100,10 @@ public class TestWebClient {
      */
     private static class TestGetContentServerErrorHandler extends AbstractHandler {
 
-        public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException {
-            response.sendError(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+        @Override
+        public boolean handle(Request request, Response response, Callback callback) throws Exception {
+            response.setStatus(HttpServletResponse.SC_SERVICE_UNAVAILABLE);
+            return false;
         }
     }
 
@@ -107,8 +112,10 @@ public class TestWebClient {
      */
     private static class TestGetContentNotFoundHandler extends AbstractHandler {
 
-        public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch) throws IOException {
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+        @Override
+        public boolean handle(Request request, Response response, Callback callback) throws Exception {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            return false;
         }
     }
 }

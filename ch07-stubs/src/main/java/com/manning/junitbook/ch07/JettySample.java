@@ -20,9 +20,11 @@
  */
 package com.manning.junitbook.ch07;
 
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.handler.ResourceHandler;
-import org.mortbay.jetty.servlet.Context;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.ContextHandler;
+import org.eclipse.jetty.server.handler.ResourceHandler;
+
+import java.io.File;
 
 /**
  * A class that demonstrates how to create a sample Jetty embedded server.
@@ -32,11 +34,13 @@ import org.mortbay.jetty.servlet.Context;
 public class JettySample {
     public static void main(String[] args) throws Exception {
         Server server = new Server(8081);
+        ContextHandler context = new ContextHandler(server,"/");
+        ResourceHandler resourceHandler = new ResourceHandler();
+        resourceHandler.setBaseResourceAsString(new File(".").getCanonicalPath());
+        resourceHandler.setWelcomeFiles("build.gradle");
+        context.setHandler(resourceHandler);
 
-        Context root = new Context(server, "/");
-        root.setResourceBase("./pom.xml");
-        root.setHandler(new ResourceHandler());
-
+        server.setHandler(context);
         server.setStopAtShutdown(true);
         server.start();
     }
