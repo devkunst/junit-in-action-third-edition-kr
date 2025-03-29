@@ -24,18 +24,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
+
+import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.assertFalse;
-
-import javax.servlet.http.HttpServletRequest;
-
-import static org.easymock.EasyMock.createStrictMock;
-import static org.easymock.EasyMock.expect;
-import static org.easymock.EasyMock.replay;
-import static org.easymock.EasyMock.verify;
-import static org.easymock.EasyMock.eq;
-
-import javax.servlet.http.HttpSession;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 /**

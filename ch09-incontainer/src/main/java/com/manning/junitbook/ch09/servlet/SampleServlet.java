@@ -20,9 +20,9 @@
  */
 package com.manning.junitbook.ch09.servlet;
 
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * A SampleServlet to demonstrate the differences of unit-testing J2EE components.

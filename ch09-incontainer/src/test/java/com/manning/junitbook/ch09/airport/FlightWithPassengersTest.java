@@ -20,21 +20,21 @@
  */
 package com.manning.junitbook.ch09.airport;
 
+
 import com.manning.junitbook.ch09.airport.producers.FlightProducer;
+import jakarta.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import javax.inject.Inject;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
-
-@RunWith(Arquillian.class)
+@ExtendWith(ArquillianExtension.class)
 public class FlightWithPassengersTest {
 
     @Deployment
@@ -47,10 +47,14 @@ public class FlightWithPassengersTest {
     @Inject
     Flight flight;
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testNumberOfSeatsCannotBeExceeded() throws IOException {
-        assertEquals(20, flight.getNumberOfPassengers());
-        flight.addPassenger(new Passenger("1247890", "Michael Johnson"));
+        Assertions.assertThrows(RuntimeException.class,
+                () -> {
+                    Assertions.assertEquals(20, flight.getNumberOfPassengers());
+                    flight.addPassenger(new Passenger("1247890", "Michael Johnson"));
+                }
+        );
     }
 
     @Test
@@ -58,9 +62,9 @@ public class FlightWithPassengersTest {
         flight.setSeats(21);
         Passenger additionalPassenger = new Passenger("1247890", "Michael Johnson");
         flight.addPassenger(additionalPassenger);
-        assertEquals(21, flight.getNumberOfPassengers());
+        Assertions.assertEquals(21, flight.getNumberOfPassengers());
         flight.removePassenger(additionalPassenger);
-        assertEquals(20, flight.getNumberOfPassengers());
-        assertEquals(21, flight.getSeats());
+        Assertions.assertEquals(20, flight.getNumberOfPassengers());
+        Assertions.assertEquals(21, flight.getSeats());
     }
 }

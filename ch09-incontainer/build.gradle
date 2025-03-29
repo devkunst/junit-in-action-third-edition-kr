@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+
+    maven {
+        url "https://repository.jboss.org/nexus/content/groups/public/"
+    }
+}
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+dependencies {
+    // Arquillian BOM
+    testImplementation 'org.jboss.arquillian:arquillian-bom:1.9.1.Final'
+
+    // JBoss Java EE 8.0
+    compileOnly 'org.jboss.spec:jboss-javaee-8.0:1.0.4.Final'
+
+    // jakarta.servlet-api
+    implementation 'jakarta.servlet:jakarta.servlet-api:6.1.0'
+
+    // JUnit Jupiter API
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.4'
+
+    // JUnit Jupiter Engine
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.11.4'
+
+    // JUnit Vintage Engine
+    testImplementation 'org.junit.vintage:junit-vintage-engine:5.11.4'
+
+    // EasyMock
+    testImplementation 'org.easymock:easymock:5.5.0'
+
+    // JMock
+    testImplementation 'org.jmock:jmock-junit5:2.13.1'
+
+    // Mockito
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
+
+    // Arquillian + Weld
+    testImplementation 'org.jboss.arquillian.junit5:arquillian-junit5-core:1.9.1.Final'
+    testImplementation 'org.jboss.arquillian.junit5:arquillian-junit5-parent:1.9.1.Final'
+    testImplementation 'org.jboss.arquillian.junit5:arquillian-junit5-container:1.9.1.Final'
+    testImplementation 'org.jboss.arquillian.container:arquillian-weld-embedded:4.0.0.Final'
+    implementation 'org.jboss.weld:weld-core-impl:6.0.0.Final'
+    implementation 'org.jboss.weld.se:weld-se-core:6.0.0.Final'
+}
+
+test {
+    useJUnitPlatform()
+}

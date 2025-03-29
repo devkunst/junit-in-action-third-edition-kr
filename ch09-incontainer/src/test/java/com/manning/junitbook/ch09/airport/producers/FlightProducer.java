@@ -22,10 +22,12 @@ package com.manning.junitbook.ch09.airport.producers;
 
 import com.manning.junitbook.ch09.airport.Flight;
 import com.manning.junitbook.ch09.airport.FlightBuilderUtil;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
-import javax.enterprise.inject.Produces;
 import java.io.IOException;
 
+@ApplicationScoped
 public class FlightProducer {
 
     @Produces
