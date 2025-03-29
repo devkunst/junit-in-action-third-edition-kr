@@ -78,10 +78,10 @@ public class MockInputStream
     /**
      * Verify how many times the close method was called.
      *
-     * @throws java.lang.AssertionError
+     * @throws AssertionError
      */
     public void verify()
-            throws java.lang.AssertionError {
+            throws AssertionError {
         if (closeCount != 1) {
             throw new AssertionError("close() should " + "have been called once and once only");
         }
