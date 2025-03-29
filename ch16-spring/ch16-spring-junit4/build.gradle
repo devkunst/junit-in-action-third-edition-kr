@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+// Java 7 사용
+sourceCompatibility = '1.7'
+targetCompatibility = '1.7'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Framework
+    implementation 'org.springframework:spring-context:4.2.5.RELEASE'
+    implementation 'org.springframework:spring-test:4.2.5.RELEASE'
+
+    // JUnit 4
+    testImplementation 'junit:junit:4.12'
+}
+
+test {
+}
