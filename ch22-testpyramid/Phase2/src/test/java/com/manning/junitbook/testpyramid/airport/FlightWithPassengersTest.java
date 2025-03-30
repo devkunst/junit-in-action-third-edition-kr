@@ -21,22 +21,20 @@
 package com.manning.junitbook.testpyramid.airport;
 
 import com.manning.junitbook.testpyramid.airport.producers.FlightProducer;
+import jakarta.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
-
+import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 
-import javax.inject.Inject;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
-@RunWith(Arquillian.class)
+@ExtendWith(ArquillianExtension.class)
 public class FlightWithPassengersTest {
 
     @Deployment

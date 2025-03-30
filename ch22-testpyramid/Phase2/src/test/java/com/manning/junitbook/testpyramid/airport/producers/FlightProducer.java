@@ -23,12 +23,12 @@ package com.manning.junitbook.testpyramid.airport.producers;
 
 import com.manning.junitbook.testpyramid.airport.Flight;
 import com.manning.junitbook.testpyramid.airport.FlightBuilderUtil;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
-import javax.enterprise.inject.Produces;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
 
+@ApplicationScoped
 public class FlightProducer {
 
     @Produces
