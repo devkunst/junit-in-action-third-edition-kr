@@ -26,11 +26,8 @@ import com.manning.junitbook.spring.registration.PassengerRegistrationEvent;
 import com.manning.junitbook.spring.registration.RegistrationManager;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -53,3 +50,4 @@ class RegistrationTest {
     }
 
 }
+
