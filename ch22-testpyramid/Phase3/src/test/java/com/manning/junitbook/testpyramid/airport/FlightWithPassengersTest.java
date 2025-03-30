@@ -22,20 +22,20 @@ package com.manning.junitbook.testpyramid.airport;
 
 import com.manning.junitbook.testpyramid.airport.annotations.FlightNumber;
 import com.manning.junitbook.testpyramid.airport.producers.FlightProducer;
+import jakarta.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,7 +43,7 @@ import java.util.Map;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-@RunWith(Arquillian.class)
+@ExtendWith(ArquillianExtension.class)
 public class FlightWithPassengersTest {
     @Deployment
     public static JavaArchive createDeployment() {

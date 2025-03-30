@@ -18,20 +18,20 @@
  *
  * ========================================================================
  */
-package com.manning.junitbook.testpyramid.airport.producers;
+package com.manning.junitbook.testpyramid.airport.annotations;
 
-import com.manning.junitbook.testpyramid.airport.FlightBuilderUtil;
-import com.manning.junitbook.testpyramid.airport.Flight;
-import com.manning.junitbook.testpyramid.airport.annotations.FlightNumber;
 
-import javax.enterprise.inject.Produces;
-import java.io.IOException;
+import jakarta.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-public class FlightProducer {
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-    @Produces
-    @FlightNumber(number= "AA1234")
-    public Flight createFlight() throws IOException {
-        return FlightBuilderUtil.buildFlightFromCsv("AA1234", 50,"src/test/resources/flights_information.csv");
-    }
+@Qualifier
+@Retention(RUNTIME)
+@Target({FIELD, METHOD})
+public @interface FlightNumber {
+    String number();
 }
