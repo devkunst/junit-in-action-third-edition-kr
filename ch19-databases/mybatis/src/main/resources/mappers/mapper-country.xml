@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.manning.junitbook.repositories.CountryRepository">
+
+    <select id="getCountriesStartingWithA" resultType="com.manning.junitbook.model.Country">
+        SELECT * FROM COUNTRY WHERE NAME LIKE 'A%'
+    </select>
+
+    <insert id="save" parameterType="com.manning.junitbook.model.Country" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO COUNTRY (NAME, CODE_NAME) VALUES (#{name}, #{codeName})
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM COUNTRY
+    </delete>
+
+    <select id="findAll" resultType="com.manning.junitbook.model.Country">
+        SELECT * FROM COUNTRY
+    </select>
+
+</mapper>

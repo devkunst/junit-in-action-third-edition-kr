@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  datasource:
+    url: jdbc:h2:mem:junitbook
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: null
+  main:
+    allow-circular-references: true
+
+mybatis:
+  mapper-locations:
+    - classpath:mappers/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
