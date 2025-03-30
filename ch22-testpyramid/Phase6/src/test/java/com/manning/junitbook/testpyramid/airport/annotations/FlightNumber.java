@@ -18,24 +18,20 @@
  *
  * ========================================================================
  */
-package com.manning.junitbook.testpyramid.airport;
+package com.manning.junitbook.testpyramid.airport.annotations;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.SnippetType;
-import cucumber.api.junit.Cucumber;
-import org.junit.runner.RunWith;
 
-/**
- * JUnit으로 Cucumber 테스트를 실행하기 위한 진입점 역할을 하는 클래스
- */
-@RunWith(Cucumber.class)
-@CucumberOptions(
-        plugin = {"pretty"},
-        features = "classpath:features")
-public class CucumberTest {
+import jakarta.inject.Qualifier;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 
-    /**
-     *  CucumberTest 클래스는 비워 두고, 스텝 정의는 별도의 클래스에서 구현
-     */
+import static java.lang.annotation.ElementType.FIELD;
+import static java.lang.annotation.ElementType.METHOD;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+@Qualifier
+@Retention(RUNTIME)
+@Target({FIELD, METHOD})
+public @interface FlightNumber {
+    String number();
 }
