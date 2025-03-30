@@ -21,8 +21,6 @@
 package com.manning.junitbook.spring;
 
 import com.manning.junitbook.spring.beans.FlightBuilder;
-import com.manning.junitbook.spring.beans.TestBeans;
-import com.manning.junitbook.spring.model.Country;
 import com.manning.junitbook.spring.model.Flight;
 import com.manning.junitbook.spring.model.Passenger;
 import com.manning.junitbook.spring.registration.PassengerRegistrationEvent;
@@ -32,8 +30,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Import(FlightBuilder.class)
