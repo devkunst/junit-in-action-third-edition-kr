@@ -20,6 +20,7 @@
  */
 package com.manning.junitbook.airport;
 
+import com.manning.junitbook.airport.*;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;

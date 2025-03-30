@@ -20,6 +20,7 @@
  */
 package com.manning.junitbook.airport;
 
+import com.manning.junitbook.airport.Passenger;
 import com.manning.junitbook.mileage.Mileage;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
