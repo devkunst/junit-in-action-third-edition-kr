@@ -21,10 +21,10 @@
 package com.manning.junitbook.databases;
 
 import com.manning.junitbook.databases.model.Country;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 public class CountryService {

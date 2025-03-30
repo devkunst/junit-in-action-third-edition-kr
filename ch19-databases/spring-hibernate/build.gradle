@@ -1,0 +1,36 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.3'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.manning.junitboot'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Hibernate Core
+	implementation 'org.hibernate.orm:hibernate-core:6.6.4.Final'
+
+	// H2 Database
+	runtimeOnly 'com.h2database:h2'
+
+	// Spring Framework Dependencies
+	implementation 'org.springframework:spring-core'
+	implementation 'org.springframework:spring-context'
+	implementation 'org.springframework:spring-orm'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	testImplementation('org.springframework.boot:spring-boot-starter-test') {
+		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+	}
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
