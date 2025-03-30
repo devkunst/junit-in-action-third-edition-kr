@@ -22,28 +22,26 @@ package com.manning.junitbook.testpyramid.airport;
 
 import com.manning.junitbook.testpyramid.airport.annotations.FlightNumber;
 import com.manning.junitbook.testpyramid.airport.producers.FlightProducer;
+import jakarta.inject.Inject;
 import org.jboss.arquillian.container.test.api.Deployment;
-import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.arquillian.junit5.ArquillianExtension;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
-import org.junit.BeforeClass;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnit;
-import org.mockito.junit.MockitoRule;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import javax.inject.Inject;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
-@RunWith(Arquillian.class)
+@ExtendWith({ArquillianExtension.class, MockitoExtension.class})
 public class FlightWithPassengersTest {
     @Deployment
     public static JavaArchive createDeployment() {
@@ -59,22 +57,21 @@ public class FlightWithPassengersTest {
     @Spy
     DistancesManager distancesManager;
 
-    @Rule
-    public MockitoRule mockitoRule = MockitoJUnit.rule();
-
     private static Map<Passenger, Integer> passengersDistancesMap = new HashMap<>();
 
-    @BeforeClass
+    @BeforeAll
     public static void setUp() {
         passengersDistancesMap.put(new Passenger("900-45-6809", "Susan Todd", "GB"), 2100);
         passengersDistancesMap.put(new Passenger("900-45-6797", "Harry Christensen", "GB"), 4200);
         passengersDistancesMap.put(new Passenger("123-45-6799", "Bethany King", "US"), 6300);
     }
 
-    @Test(expected = RuntimeException.class)
+    @Test
     public void testNumberOfSeatsCannotBeExceeded() throws IOException {
-        assertEquals(50, flight.getPassengersNumber());
-        flight.addPassenger(new Passenger("124-56-7890", "Michael Johnson", "US"));
+        Assertions.assertEquals(50, flight.getPassengersNumber());
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            flight.addPassenger(new Passenger("124-56-7890", "Michael Johnson", "US"));
+        });
     }
 
     @Test
@@ -82,10 +79,10 @@ public class FlightWithPassengersTest {
         flight.setSeats(51);
         Passenger additionalPassenger = new Passenger("124-56-7890", "Michael Johnson", "US");
         flight.addPassenger(additionalPassenger);
-        assertEquals(51, flight.getPassengersNumber());
+        Assertions.assertEquals(51, flight.getPassengersNumber());
         flight.removePassenger(additionalPassenger);
-        assertEquals(50, flight.getPassengersNumber());
-        assertEquals(51, flight.getSeats());
+        Assertions.assertEquals(50, flight.getPassengersNumber());
+        Assertions.assertEquals(51, flight.getSeats());
     }
 
     @Test
@@ -94,8 +91,8 @@ public class FlightWithPassengersTest {
 
         distancesManager.calculateGivenPoints();
 
-        assertEquals(210, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6809", "Susan Todd", "GB")).longValue());
-        assertEquals(420, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6797", "Harry Christensen", "GB")).longValue());
-        assertEquals(630, distancesManager.getPassengersPointsMap().get(new Passenger("123-45-6799", "Bethany King", "US")).longValue());
+        Assertions.assertEquals(210, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6809", "Susan Todd", "GB")).longValue());
+        Assertions.assertEquals(420, distancesManager.getPassengersPointsMap().get(new Passenger("900-45-6797", "Harry Christensen", "GB")).longValue());
+        Assertions.assertEquals(630, distancesManager.getPassengersPointsMap().get(new Passenger("123-45-6799", "Bethany King", "US")).longValue());
     }
 }
