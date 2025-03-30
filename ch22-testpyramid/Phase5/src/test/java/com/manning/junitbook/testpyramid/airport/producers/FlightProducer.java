@@ -20,13 +20,15 @@
  */
 package com.manning.junitbook.testpyramid.airport.producers;
 
+import com.manning.junitbook.testpyramid.airport.Flight;
 import com.manning.junitbook.testpyramid.airport.FlightBuilderUtil;
 import com.manning.junitbook.testpyramid.airport.annotations.FlightNumber;
-import com.manning.junitbook.testpyramid.airport.Flight;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.inject.Produces;
 
-import javax.enterprise.inject.Produces;
 import java.io.IOException;
 
+@ApplicationScoped
 public class FlightProducer {
 
     @Produces
