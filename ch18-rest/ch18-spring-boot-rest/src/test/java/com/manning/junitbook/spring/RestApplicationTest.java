@@ -24,15 +24,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.manning.junitbook.spring.beans.FlightBuilder;
 import com.manning.junitbook.spring.exceptions.PassengerNotFoundException;
 import com.manning.junitbook.spring.model.*;
+import jakarta.servlet.ServletException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.*;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.web.util.NestedServletException;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -61,10 +61,10 @@ public class RestApplicationTest {
     @Autowired
     private Map<String, Country> countriesMap;
 
-    @MockBean
+    @MockitoBean
     private PassengerRepository passengerRepository;
 
-    @MockBean
+    @MockitoBean
     private CountryRepository countryRepository;
 
     @Test
@@ -92,7 +92,7 @@ public class RestApplicationTest {
 
     @Test
     void testPassengerNotFound() {
-        Throwable throwable = assertThrows(NestedServletException.class, () -> mvc.perform(get("/passengers/30")).andExpect(status().isNotFound()));
+        Throwable throwable = assertThrows(ServletException.class, () -> mvc.perform(get("/passengers/30")).andExpect(status().isNotFound()));
         assertEquals(PassengerNotFoundException.class, throwable.getCause().getClass());
     }
 
