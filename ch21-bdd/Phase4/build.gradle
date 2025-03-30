@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.manning.junitbook'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = '17'
+targetCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.11.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.vintage:junit-vintage-engine'
+
+    implementation 'org.jbehave:jbehave-core:5.2.0'
+    implementation 'org.jbehave:jbehave-maven-plugin:5.2.0'
+}
+
+test {
+    useJUnitPlatform()
+}
